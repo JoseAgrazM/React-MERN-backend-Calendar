@@ -6,7 +6,7 @@ const dbConnection = async () => {
         
 		console.log('DB Online');
 	} catch (error) {
-		console.log(error);
+		console.log(error.message);
 		throw new Error('Error a la hora de inicializar la base de datos');
 	}
 };
