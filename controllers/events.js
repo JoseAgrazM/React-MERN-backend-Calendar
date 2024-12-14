@@ -4,8 +4,6 @@ const Evento = require('../models/Evento');
 const getEventos = async (req, res = response) => {
 	const eventos = await Evento.find().populate('user', 'name');
 
-	console.log(eventos);
-
 	res.json({
 		ok: true,
 		eventos,
@@ -69,8 +67,6 @@ const actualizarEvento = async (req, res = response) => {
 			evento: eventoActualizado,
 		});
 	} catch (error) {
-		console.log(error);
-
 		res.status(500).json({
 			ok: false,
 			msg: 'Hable con el administrador',
@@ -101,9 +97,9 @@ const eliminarEvento = async (req, res = response) => {
 
 		res.json({ ok: true });
 	} catch (error) {
-		res.status().json({
-			ok: true,
-			msg: 'eliminarEvento',
+		res.status(500).json({
+			ok: false,
+			msg: 'Hable con el administrador',
 		});
 	}
 };
